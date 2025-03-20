@@ -166,12 +166,14 @@ export const citation_state =
       let x = this.state.cite.data[bidx]
       const etal = (x.author.length <= 1 )? "" : " et al."
       const name = (x.author[0].given ? x.author[0].given[0] + ". " : "") + x.author[0].family;
+      const url = x.url ? x.url : "https://www.google.com/search?q=" + x.title;
       const short_bib = name + etal + ", " + x.title
       
       if (i < nknow)
       {
          this.state.bibprop[id]["full_bib"] = bib
          this.state.bibprop[id]["short_bib"] = short_bib
+         this.state.bibprop[id]["url"] = url
          this.state.bibprop[id]["id"] = id
          if (this.state.config.numerical_ref){
            this.state.bibprop[id]["cite_id"] = "["+i+"]"

@@ -13,6 +13,7 @@ const props = defineProps({
 
 const reftext = ref("")
 const refnum = ref("")
+const refurl =ref("")
 const footpage_bib = ref("")
 
 let bibSlideConfig = {... citation_state.default_config, ... $slidev.configs?.biblio, ...$frontmatter?.biblio}
@@ -47,12 +48,14 @@ function update_bib()
     {
       refnum.value =  "(#RefErr)"
       reftext.value = props.bref + ": ERROR ref not found"
+      refurl.value = "(#RefErr)"
       show_tooltips.value = true
     }
     else
     {
       refnum.value =  my_bib_data.cite_id
       reftext.value = my_bib_data.full_bib
+      refurl.value = my_bib_data.url
       show_tooltips.value = bibSlideConfig.tooltips
     }
   
@@ -77,7 +80,7 @@ citation_state.init().then( (cite) =>
 </script>
 
 <template>
-  <a class="biblio_tooltips" v-if="refnum && show_tooltips" :title="reftext">{{refnum}}</a>
+  <a class="biblio_tooltips" v-if="refnum && show_tooltips" :title="reftext">{{refnum}} :href="refurl"</a>
   <span class="biblio_ref" v-if="refnum && !show_tooltips">{{refnum}}</span>
 
   <div v-if="footpage_bib !== '' && footpage_bibtype!='none'" class="biblio_foot" >
