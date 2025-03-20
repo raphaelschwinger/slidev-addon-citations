@@ -80,7 +80,7 @@ citation_state.init().then( (cite) =>
 </script>
 
 <template>
-  <a class="biblio_tooltips" v-if="refnum && show_tooltips" :href="refurl" :title="reftext">{{refnum}}"</a>
+  <a class="biblio_tooltips" v-if="refnum && show_tooltips" :href="refurl" :title="reftext">{{refnum}}</a>
   <span class="biblio_ref" v-if="refnum && !show_tooltips">{{refnum}}</span>
 
   <div v-if="footpage_bib !== '' && footpage_bibtype!='none'" class="biblio_foot" >

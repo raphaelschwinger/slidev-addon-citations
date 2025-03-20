@@ -166,7 +166,7 @@ export const citation_state =
       let x = this.state.cite.data[bidx]
       const etal = (x.author.length <= 1 )? "" : " et al."
       const name = (x.author[0].given ? x.author[0].given[0] + ". " : "") + x.author[0].family;
-      const url = x.url ? x.url : "https://www.google.com/search?q=" + x.title;
+      const url = x.URL ? x.URL : "https://www.google.com/search?q=" + x.title;
       const short_bib = name + etal + ", " + x.title
       
       if (i < nknow)
